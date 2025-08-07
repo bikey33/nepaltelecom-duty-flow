@@ -1,11 +1,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { UserCard, UserData } from "@/components/UserCard";
 import { Users, Plus, Search, Filter } from 'lucide-react';
 
 const Employees = () => {
-  const employees = [
+  const employees: UserData[] = [
     {
       id: 1,
       name: "Ram Sharma",
@@ -14,7 +14,9 @@ const Employees = () => {
       employeeId: "EMP001",
       status: "active",
       phone: "+977-9841234567",
-      email: "ram.sharma@ntc.net.np"
+      email: "ram.sharma@ntc.net.np",
+      location: "Central Office",
+      joinDate: "Jan 2022"
     },
     {
       id: 2,
@@ -24,7 +26,9 @@ const Employees = () => {
       employeeId: "EMP002",
       status: "active",
       phone: "+977-9841234568",
-      email: "sita.karki@ntc.net.np"
+      email: "sita.karki@ntc.net.np",
+      location: "Call Center",
+      joinDate: "Mar 2021"
     },
     {
       id: 3,
@@ -34,7 +38,9 @@ const Employees = () => {
       employeeId: "EMP003",
       status: "on_leave",
       phone: "+977-9841234569",
-      email: "hari.thapa@ntc.net.np"
+      email: "hari.thapa@ntc.net.np",
+      location: "Field Office",
+      joinDate: "Jul 2020"
     },
     {
       id: 4,
@@ -44,22 +50,12 @@ const Employees = () => {
       employeeId: "EMP004",
       status: "active",
       phone: "+977-9841234570",
-      email: "maya.gurung@ntc.net.np"
+      email: "maya.gurung@ntc.net.np",
+      location: "Main Office",
+      joinDate: "Sep 2019"
     }
   ];
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'active': return 'bg-success text-success-foreground';
-      case 'on_leave': return 'bg-warning text-warning-foreground';
-      case 'inactive': return 'bg-muted text-muted-foreground';
-      default: return 'bg-secondary text-secondary-foreground';
-    }
-  };
-
-  const getInitials = (name: string) => {
-    return name.split(' ').map(n => n[0]).join('').toUpperCase();
-  };
 
   return (
     <div className="p-6 space-y-6">
@@ -128,36 +124,12 @@ const Employees = () => {
         <CardContent>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {employees.map((employee) => (
-              <Card key={employee.id} className="hover:shadow-md transition-shadow">
-                <CardContent className="p-4">
-                  <div className="flex items-start gap-3">
-                    <Avatar className="h-12 w-12">
-                      <AvatarFallback className="bg-primary text-primary-foreground">
-                        {getInitials(employee.name)}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between mb-1">
-                        <h3 className="font-medium truncate">{employee.name}</h3>
-                        <Badge className={getStatusColor(employee.status)}>
-                          {employee.status.replace('_', ' ')}
-                        </Badge>
-                      </div>
-                      <p className="text-sm text-muted-foreground mb-1">{employee.position}</p>
-                      <p className="text-xs text-muted-foreground mb-2">{employee.department}</p>
-                      <div className="space-y-1">
-                        <p className="text-xs text-muted-foreground">ID: {employee.employeeId}</p>
-                        <p className="text-xs text-muted-foreground">{employee.phone}</p>
-                        <p className="text-xs text-muted-foreground truncate">{employee.email}</p>
-                      </div>
-                      <div className="flex gap-1 mt-3">
-                        <Button variant="outline" size="sm">View</Button>
-                        <Button variant="outline" size="sm">Edit</Button>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              <UserCard
+                key={employee.id}
+                user={employee}
+                onView={(id) => console.log('View employee', id)}
+                onEdit={(id) => console.log('Edit employee', id)}
+              />
             ))}
           </div>
         </CardContent>

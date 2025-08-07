@@ -1,15 +1,19 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { ScheduleTable, ScheduleData } from "@/components/ScheduleTable";
 import { Calendar, Plus, Filter, Download } from 'lucide-react';
 
 const DutyChart = () => {
-  const shifts = [
+  const shifts: ScheduleData[] = [
     {
       id: 1,
       employee: "Ram Sharma",
+      employeeId: "EMP001",
       position: "Network Engineer",
-      shift: "Morning (6 AM - 2 PM)",
+      shift: "Morning",
+      startTime: "6:00 AM",
+      endTime: "2:00 PM",
       date: "2024-01-15",
       status: "scheduled",
       location: "Central Office"
@@ -17,8 +21,11 @@ const DutyChart = () => {
     {
       id: 2,
       employee: "Sita Karki",
+      employeeId: "EMP002",
       position: "Customer Service",
-      shift: "Evening (2 PM - 10 PM)",
+      shift: "Evening",
+      startTime: "2:00 PM",
+      endTime: "10:00 PM",
       date: "2024-01-15",
       status: "completed",
       location: "Call Center"
@@ -26,8 +33,11 @@ const DutyChart = () => {
     {
       id: 3,
       employee: "Hari Thapa",
+      employeeId: "EMP003",
       position: "Field Technician",
-      shift: "Night (10 PM - 6 AM)",
+      shift: "Night",
+      startTime: "10:00 PM",
+      endTime: "6:00 AM",
       date: "2024-01-15",
       status: "scheduled",
       location: "Maintenance Unit"
@@ -35,22 +45,17 @@ const DutyChart = () => {
     {
       id: 4,
       employee: "Maya Gurung",
+      employeeId: "EMP004",
       position: "Supervisor",
-      shift: "Morning (6 AM - 2 PM)",
+      shift: "Morning",
+      startTime: "6:00 AM",
+      endTime: "2:00 PM",
       date: "2024-01-16",
       status: "scheduled",
       location: "Central Office"
     }
   ];
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'completed': return 'bg-success text-success-foreground';
-      case 'scheduled': return 'bg-primary text-primary-foreground';
-      case 'missed': return 'bg-destructive text-destructive-foreground';
-      default: return 'bg-secondary text-secondary-foreground';
-    }
-  };
 
   return (
     <div className="p-6 space-y-6">
@@ -104,61 +109,12 @@ const DutyChart = () => {
       </div>
 
       {/* Duty Chart Table */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Calendar className="h-5 w-5" />
-            Current Week Schedule
-          </CardTitle>
-          <CardDescription>
-            Overview of duty assignments for the current week
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b">
-                  <th className="text-left p-3 font-medium">Employee</th>
-                  <th className="text-left p-3 font-medium">Position</th>
-                  <th className="text-left p-3 font-medium">Shift</th>
-                  <th className="text-left p-3 font-medium">Date</th>
-                  <th className="text-left p-3 font-medium">Location</th>
-                  <th className="text-left p-3 font-medium">Status</th>
-                  <th className="text-left p-3 font-medium">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {shifts.map((shift) => (
-                  <tr key={shift.id} className="border-b hover:bg-muted/50">
-                    <td className="p-3">
-                      <div>
-                        <div className="font-medium">{shift.employee}</div>
-                        <div className="text-sm text-muted-foreground">ID: EMP{shift.id.toString().padStart(3, '0')}</div>
-                      </div>
-                    </td>
-                    <td className="p-3 text-sm">{shift.position}</td>
-                    <td className="p-3 text-sm">{shift.shift}</td>
-                    <td className="p-3 text-sm">{shift.date}</td>
-                    <td className="p-3 text-sm">{shift.location}</td>
-                    <td className="p-3">
-                      <Badge className={getStatusColor(shift.status)}>
-                        {shift.status}
-                      </Badge>
-                    </td>
-                    <td className="p-3">
-                      <div className="flex gap-1">
-                        <Button variant="ghost" size="sm">Edit</Button>
-                        <Button variant="ghost" size="sm">Swap</Button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </CardContent>
-      </Card>
+      <ScheduleTable
+        data={shifts}
+        title="Current Week Schedule"
+        onEdit={(id) => console.log('Edit shift', id)}
+        onSwap={(id) => console.log('Swap shift', id)}
+      />
     </div>
   );
 };

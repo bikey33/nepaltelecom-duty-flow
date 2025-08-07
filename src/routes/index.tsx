@@ -7,9 +7,12 @@ import Index from '@/pages/Index';
 import Dashboard from '@/pages/Dashboard';
 import DutyChart from '@/pages/DutyChart';
 import Employees from '@/pages/Employees';
+import Attendance from '@/pages/Attendance';
 import Schedule from '@/pages/Schedule';
 import Reports from '@/pages/Reports';
 import Settings from '@/pages/Settings';
+import Login from '@/pages/Login';
+import Register from '@/pages/Register';
 import NotFound from '@/pages/NotFound';
 
 export const router = createBrowserRouter([
@@ -34,6 +37,10 @@ export const router = createBrowserRouter([
         element: <Employees />
       },
       {
+        path: ROUTES.ATTENDANCE,
+        element: <Attendance />
+      },
+      {
         path: ROUTES.SCHEDULE,
         element: <Schedule />
       },
@@ -46,6 +53,14 @@ export const router = createBrowserRouter([
         element: <Settings />
       }
     ]
+  },
+  {
+    path: ROUTES.LOGIN,
+    element: <Login />
+  },
+  {
+    path: ROUTES.REGISTER,
+    element: <Register />
   },
   {
     path: '*',

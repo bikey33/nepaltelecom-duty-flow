@@ -96,6 +96,20 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
           </NavLink>
           
           <NavLink
+            to={ROUTES.ATTENDANCE}
+            className={({ isActive }) =>
+              `flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                isActive
+                  ? 'bg-[hsl(var(--primary-hover))] text-[hsl(var(--header-foreground))]'
+                  : 'text-[hsl(var(--header-foreground))]/80 hover:bg-[hsl(var(--primary-hover))]/50 hover:text-[hsl(var(--header-foreground))]'
+              }`
+            }
+          >
+            <Clipboard className="h-4 w-4" />
+            Attendance
+          </NavLink>
+          
+          <NavLink
             to={ROUTES.REPORTS}
             className={({ isActive }) =>
               `flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${

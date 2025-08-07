@@ -8,9 +8,12 @@ export const ROUTES = {
   DASHBOARD: '/dashboard',
   DUTY_CHART: '/duty-chart',
   EMPLOYEES: '/employees',
+  ATTENDANCE: '/attendance',
   SCHEDULE: '/schedule',
   REPORTS: '/reports',
   SETTINGS: '/settings',
+  LOGIN: '/login',
+  REGISTER: '/register'
 } as const;
 
 export const USER_ROLES = {

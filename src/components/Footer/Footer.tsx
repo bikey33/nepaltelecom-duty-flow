@@ -38,7 +38,7 @@ export const Footer = () => {
         </div>
 
         <div className="mt-6 pt-6 border-t text-center text-sm text-muted-foreground">
-          <p>&copy; {currentYear} {COMPANY_NAME}. All rights reserved.</p>
+          <p>&copy; {currentYear} Duty Manager. All rights reserved.</p>
         </div>
       </div>
     </footer>

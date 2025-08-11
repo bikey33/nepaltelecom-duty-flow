@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { MainLayout } from '@/layouts/MainLayout';
+import { ScheduleLayout } from '@/layouts/ScheduleLayout';
 import { ROUTES } from '@/utils/constants';
 
 // Pages
@@ -41,10 +42,6 @@ export const router = createBrowserRouter([
         element: <Attendance />
       },
       {
-        path: ROUTES.SCHEDULE,
-        element: <Schedule />
-      },
-      {
         path: ROUTES.REPORTS,
         element: <Reports />
       },
@@ -53,6 +50,10 @@ export const router = createBrowserRouter([
         element: <Settings />
       }
     ]
+  },
+  {
+    path: ROUTES.SCHEDULE,
+    element: <ScheduleLayout><Schedule /></ScheduleLayout>
   },
   {
     path: ROUTES.LOGIN,

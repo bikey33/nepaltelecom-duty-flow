@@ -31,98 +31,12 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
               NT
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-lg font-semibold">Duty Manager</h1>
+              <h1 className="text-lg font-semibold">INOC Duty Roster</h1>
               <p className="text-xs opacity-90">{COMPANY_NAME}</p>
             </div>
           </div>
         </div>
 
-        {/* Center - Navigation Links (hidden on mobile) */}
-        <nav className="hidden lg:flex items-center space-x-1">
-          <NavLink
-            to={ROUTES.DASHBOARD}
-            className={({ isActive }) =>
-              `flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                isActive
-                  ? 'bg-[hsl(var(--primary-hover))] text-[hsl(var(--header-foreground))]'
-                  : 'text-[hsl(var(--header-foreground))]/80 hover:bg-[hsl(var(--primary-hover))]/50 hover:text-[hsl(var(--header-foreground))]'
-              }`
-            }
-          >
-            <LayoutDashboard className="h-4 w-4" />
-            Dashboard
-          </NavLink>
-          
-          <NavLink
-            to={ROUTES.SCHEDULE}
-            className={({ isActive }) =>
-              `flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                isActive
-                  ? 'bg-[hsl(var(--primary-hover))] text-[hsl(var(--header-foreground))]'
-                  : 'text-[hsl(var(--header-foreground))]/80 hover:bg-[hsl(var(--primary-hover))]/50 hover:text-[hsl(var(--header-foreground))]'
-              }`
-            }
-          >
-            <Calendar className="h-4 w-4" />
-            Schedule
-          </NavLink>
-          
-          <NavLink
-            to={ROUTES.DUTY_CHART}
-            className={({ isActive }) =>
-              `flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                isActive
-                  ? 'bg-[hsl(var(--primary-hover))] text-[hsl(var(--header-foreground))]'
-                  : 'text-[hsl(var(--header-foreground))]/80 hover:bg-[hsl(var(--primary-hover))]/50 hover:text-[hsl(var(--header-foreground))]'
-              }`
-            }
-          >
-            <Clipboard className="h-4 w-4" />
-            Roster
-          </NavLink>
-          
-          <NavLink
-            to={ROUTES.EMPLOYEES}
-            className={({ isActive }) =>
-              `flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                isActive
-                  ? 'bg-[hsl(var(--primary-hover))] text-[hsl(var(--header-foreground))]'
-                  : 'text-[hsl(var(--header-foreground))]/80 hover:bg-[hsl(var(--primary-hover))]/50 hover:text-[hsl(var(--header-foreground))]'
-              }`
-            }
-          >
-            <Users className="h-4 w-4" />
-            Personnel
-          </NavLink>
-          
-          <NavLink
-            to={ROUTES.ATTENDANCE}
-            className={({ isActive }) =>
-              `flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                isActive
-                  ? 'bg-[hsl(var(--primary-hover))] text-[hsl(var(--header-foreground))]'
-                  : 'text-[hsl(var(--header-foreground))]/80 hover:bg-[hsl(var(--primary-hover))]/50 hover:text-[hsl(var(--header-foreground))]'
-              }`
-            }
-          >
-            <Clipboard className="h-4 w-4" />
-            Attendance
-          </NavLink>
-          
-          <NavLink
-            to={ROUTES.REPORTS}
-            className={({ isActive }) =>
-              `flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                isActive
-                  ? 'bg-[hsl(var(--primary-hover))] text-[hsl(var(--header-foreground))]'
-                  : 'text-[hsl(var(--header-foreground))]/80 hover:bg-[hsl(var(--primary-hover))]/50 hover:text-[hsl(var(--header-foreground))]'
-              }`
-            }
-          >
-            <FileText className="h-4 w-4" />
-            Reports
-          </NavLink>
-        </nav>
 
         {/* Right side - Actions */}
         <div className="flex items-center gap-2">

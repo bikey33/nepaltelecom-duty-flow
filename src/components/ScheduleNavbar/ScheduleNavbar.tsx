@@ -25,33 +25,6 @@ export const ScheduleNavbar: React.FC<ScheduleNavbarProps> = ({ className }) => 
           <span className="text-white font-semibold">INOC Duty Roster</span>
         </div>
 
-        {/* Center: Nav items */}
-        <div className="hidden md:flex items-center gap-1">
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) => `${baseItem} ${isActive ? activeItem : ""}`}
-          >
-            Dashboard
-          </NavLink>
-          <NavLink
-            to="/schedule"
-            className={({ isActive }) => `${baseItem} ${isActive ? activeItem : ""}`}
-          >
-            Schedule
-          </NavLink>
-          <NavLink
-            to="/reports"
-            className={({ isActive }) => `${baseItem} ${isActive ? activeItem : ""}`}
-          >
-            Reports
-          </NavLink>
-          <NavLink
-            to="/settings"
-            className={({ isActive }) => `${baseItem} ${isActive ? activeItem : ""}`}
-          >
-            Settings
-          </NavLink>
-        </div>
 
         {/* Right: Profile */}
         <div className="flex items-center gap-3">

@@ -19,9 +19,9 @@
     --popover-foreground: 222.2 84% 4.9%;
 
     /* Nepal Telecom Corporate Colors */
-    --primary: 214 100% 40%; /* Corporate Blue */
+    --primary: 216 98% 52%; /* #0D6EFD */
     --primary-foreground: 0 0% 98%;
-    --primary-hover: 214 100% 35%;
+    --primary-hover: 216 88% 45%; /* #0B5ED7 */
 
     /* Nepal Red Accent */
     --accent: 0 84% 55%; /* Nepal Red */
@@ -50,7 +50,7 @@
     --ring: 214 100% 40%;
 
     /* Layout specific */
-    --header-bg: 214 100% 40%;
+    --header-bg: 216 98% 52%; /* #0D6EFD */
     --header-foreground: 0 0% 98%;
     --sidebar-bg: 0 0% 98%;
     --sidebar-foreground: 222.2 84% 4.9%;

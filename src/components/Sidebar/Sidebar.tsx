@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { ROUTES } from '@/utils/constants';
 import { NavItem } from '@/types';
+import { NavLink } from 'react-router-dom';
 
 interface SidebarProps {
   isOpen?: boolean;
@@ -80,11 +81,22 @@ export const Sidebar = ({ isOpen = true, onClose }: SidebarProps) => {
               <Button
                 key={item.href}
                 variant="ghost"
+                asChild
                 className="w-full justify-start gap-3 text-[hsl(var(--sidebar-foreground))] hover:bg-primary/10 hover:text-primary"
                 onClick={onClose}
               >
-                {IconComponent && <IconComponent className="h-5 w-5" />}
-                {item.title}
+                <NavLink
+                  to={item.href}
+                  className={({ isActive }) =>
+                    cn(
+                      'flex w-full items-center gap-3 px-2 py-2 rounded-md',
+                      isActive && 'bg-primary/10 text-primary'
+                    )
+                  }
+                >
+                  {IconComponent && <IconComponent className="h-5 w-5" />}
+                  {item.title}
+                </NavLink>
               </Button>
             );
           })}

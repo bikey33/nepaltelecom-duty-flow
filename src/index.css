@@ -89,6 +89,11 @@
     --nt-accent: 44 97% 55%; /* #fcbf1e */
     --nt-bg: 220 20% 97%; /* #f7f8fa */
     --nt-text: 0 0% 13%; /* #222 */
+    
+    /* Gradient animation colors */
+    --gradient-color-1: 210 100% 30%; /* #004e9a */
+    --gradient-color-2: 210 85% 42%; /* #0a6cc2 */
+    --gradient-color-3: 210 50% 93%; /* #e8f1f9 */
   }
 
   .dark {
@@ -137,5 +142,30 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .gradient-background {
+    background: linear-gradient(-45deg, 
+      hsl(var(--gradient-color-1)), 
+      hsl(var(--gradient-color-2)), 
+      hsl(var(--gradient-color-3)), 
+      hsl(var(--gradient-color-2))
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 }

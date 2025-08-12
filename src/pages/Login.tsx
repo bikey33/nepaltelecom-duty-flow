@@ -31,77 +31,75 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center font-sans bg-[hsl(var(--nt-bg))] text-[hsl(var(--nt-text))] p-4">
+    <div className="min-h-screen flex items-center justify-center font-sans gradient-background p-4">
       <div className="w-full max-w-md">
-        <div className="text-center mb-6">
-          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-[hsl(var(--nt-primary))] text-white font-bold text-lg shadow-sm">NT</div>
-          <h1 className="text-2xl font-semibold">{COMPANY_NAME}</h1>
-          <p className="text-sm text-muted-foreground">{APP_NAME}</p>
-        </div>
-
-        <Card className="shadow-md rounded-lg border border-[hsl(var(--border))] bg-white">
-          <CardContent className="p-6">
-            <h2 className="text-xl font-semibold mb-1 text-[hsl(var(--nt-text))]">Welcome back</h2>
-            <p className="text-sm text-muted-foreground mb-6">Sign in to continue</p>
-            <form onSubmit={handleSubmit} className="space-y-4">
+        <Card className="shadow-lg border-0 bg-white/90 backdrop-blur-sm" style={{ borderRadius: '12px' }}>
+          <CardContent className="p-8">
+            <h1 className="text-2xl font-semibold mb-6 text-center" style={{ color: '#004e9a' }}>Login</h1>
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-2">
-                <Label htmlFor="username" className="text-[hsl(var(--nt-text))]">Username / Employee ID</Label>
-                <div className="relative">
-                  <UserIcon className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
-                  <Input
-                    id="username"
-                    type="text"
-                    placeholder="e.g. 123456 / jdoe"
-                    className="pl-9 bg-white border border-[hsl(var(--input))] focus-visible:ring-[hsl(var(--nt-primary))] focus-visible:ring-offset-0 focus-visible:border-[hsl(var(--nt-primary))]"
-                    value={formData.username}
-                    onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-                    required
-                  />
-                </div>
+                <Label htmlFor="username" className="text-gray-700 font-medium">Username / Employee ID</Label>
+                <Input
+                  id="username"
+                  type="text"
+                  placeholder="Enter your username or employee ID"
+                  className="bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-0 focus-visible:border-blue-500"
+                  style={{ borderRadius: '8px' }}
+                  value={formData.username}
+                  onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                  required
+                />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-[hsl(var(--nt-text))]">Password</Label>
+                <Label htmlFor="password" className="text-gray-700 font-medium">Password</Label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="password"
                     type={showPassword ? 'text' : 'password'}
                     placeholder="Enter your password"
-                    className="pl-9 pr-9 bg-white border border-[hsl(var(--input))] focus-visible:ring-[hsl(var(--nt-primary))] focus-visible:ring-offset-0 focus-visible:border-[hsl(var(--nt-primary))]"
+                    className="pr-9 bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-0 focus-visible:border-blue-500"
+                    style={{ borderRadius: '8px' }}
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     required
                   />
                   <button
                     type="button"
-                    className="absolute right-3 top-2.5 text-[hsl(var(--muted-foreground))] hover:text-foreground"
+                    className="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600"
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
                 </div>
-                <div className="text-right">
-                  <button
-                    type="button"
-                    onClick={() => setResetOpen(true)}
-                    className="text-sm text-[hsl(var(--nt-primary))] hover:underline"
-                  >
-                    Forget Password?
-                  </button>
-                </div>
               </div>
 
-              <Button type="submit" className="w-full bg-[hsl(var(--nt-primary))] text-white hover:bg-[hsl(var(--nt-primary-hover))]">
+              <div className="text-right">
+                <button
+                  type="button"
+                  onClick={() => setResetOpen(true)}
+                  className="text-sm hover:underline"
+                  style={{ color: '#004e9a' }}
+                >
+                  Forgot Password?
+                </button>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full text-white font-medium py-2.5 transition-colors"
+                style={{ 
+                  backgroundColor: '#004e9a',
+                  borderRadius: '8px'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#003a7a'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#004e9a'}
+              >
                 Login
-              </Button>
+              </button>
             </form>
           </CardContent>
         </Card>
-
-        <div className="text-center text-xs text-muted-foreground mt-6">
-          © 2025 {COMPANY_NAME}. All rights reserved.
-        </div>
       </div>
 
       <Dialog open={resetOpen} onOpenChange={setResetOpen}>

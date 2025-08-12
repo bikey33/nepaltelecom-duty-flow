@@ -4,7 +4,6 @@ import { ScheduleLayout } from '@/layouts/ScheduleLayout';
 import { ROUTES } from '@/utils/constants';
 
 // Pages
-import Index from '@/pages/Index';
 import Dashboard from '@/pages/Dashboard';
 import DutyChart from '@/pages/DutyChart';
 import Employees from '@/pages/Employees';
@@ -15,56 +14,65 @@ import Settings from '@/pages/Settings';
 import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 import NotFound from '@/pages/NotFound';
+import { ProtectedRoute } from '@/routes/ProtectedRoute';
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <MainLayout />,
     children: [
       {
         index: true,
-        element: <Index />
+        element: <Login />
       },
       {
-        path: ROUTES.DASHBOARD,
-        element: <Dashboard />
+        path: ROUTES.LOGIN,
+        element: <Login />
       },
       {
-        path: ROUTES.DUTY_CHART,
-        element: <DutyChart />
+        element: <MainLayout />,
+        children: [
+          {
+            path: ROUTES.DASHBOARD,
+            element: (
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            )
+          },
+          {
+            path: ROUTES.DUTY_CHART,
+            element: <DutyChart />
+          },
+          {
+            path: ROUTES.EMPLOYEES,
+            element: <Employees />
+          },
+          {
+            path: ROUTES.ATTENDANCE,
+            element: <Attendance />
+          },
+          {
+            path: ROUTES.REPORTS,
+            element: <Reports />
+          },
+          {
+            path: ROUTES.SETTINGS,
+            element: <Settings />
+          }
+        ]
       },
       {
-        path: ROUTES.EMPLOYEES,
-        element: <Employees />
+        path: ROUTES.SCHEDULE,
+        element: <ScheduleLayout><Schedule /></ScheduleLayout>
       },
       {
-        path: ROUTES.ATTENDANCE,
-        element: <Attendance />
+        path: ROUTES.REGISTER,
+        element: <Register />
       },
       {
-        path: ROUTES.REPORTS,
-        element: <Reports />
-      },
-      {
-        path: ROUTES.SETTINGS,
-        element: <Settings />
+        path: '*',
+        element: <NotFound />
       }
     ]
-  },
-  {
-    path: ROUTES.SCHEDULE,
-    element: <ScheduleLayout><Schedule /></ScheduleLayout>
-  },
-  {
-    path: ROUTES.LOGIN,
-    element: <Login />
-  },
-  {
-    path: ROUTES.REGISTER,
-    element: <Register />
-  },
-  {
-    path: '*',
-    element: <NotFound />
   }
 ]);
